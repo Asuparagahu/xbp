@@ -70,7 +70,59 @@ def play_again():
         print("遊んでくれてありがとう！！！")    
         exit()
 
-            
+def result(dealer_hand,player_hand):
+    if total(player_hand) > total(dealer_hand):
+        print(
+            f" \ディーラーの合計は{total(dealer_hand)} あなたの合計は {total(player_hand)} です。\033[32mYou Win!\033[0m")
+
+    elif total(dealer_hand) > total(player_hand):  
+        print(
+            f"\nディーラーの合計は{total(dealer_hand)} あなたの合計は {total(player_hand)} です。\033[32mYou Lose...\033[0m" ) 
+
+
+
+def game():
+    dealer_hand = deal()
+    player_hand = deal()
+    print(f"ディーラーのカードは{dealer_hand[0]}です。")   
+    print(f"プレイヤーのカードは{player_hand} 合計が {total(player_hand)}です。")        
+
+    choice = 0
+
+
+    while choice != quit:
+        choice = input("もう一枚引きますか？　それとも引きませんか？ (hit/stand): ").lower()
+        if choice == "hit":
+            hit (player_hand)
+            print(
+                f"\nあなたに {player_hand [-1]}が配られ、カードは　{player_hand} 合計は {total(dealer_hand)}です。")
+            if total(player_hand)  > 21:
+                print("あなたは 21 をこえてしまいました。\033[91mYou Lose...\033[0m")  
+                choice = quit
+
+
+        
+             
+
+        elif choice == "stand":
+            print(
+                f"\nディーラーの2枚目のカードは {dealer_hand[1]}合計は {total(dealer_hand)}です。")
+            while total(dealer_hand)  <17:
+                hit(dealer_hand)
+                print(
+                    f"\nディーラーに {dealer_hand[-1]}が配られ、カードは {dealer_hand} 合計は{total(dealer_hand)}です。")
+                if total(dealer_hand) > 21:
+                    print("ディーラーは21 をこえてしまいました。\033[32mYou Win!!\033[0m")   
+                    choice = quit
+
+
+            if total(dealer_hand) <= 21:
+                result(dealer_hand, player_hand)    
+                choice = quit
+
+
+
+game()                  
 
 
 
