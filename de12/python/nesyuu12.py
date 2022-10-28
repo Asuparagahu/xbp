@@ -1,5 +1,4 @@
-for i in range(1,5):
-    print(i,"人目")
+
 
 import random
 
@@ -9,7 +8,7 @@ deck=[1,2,3,4,5,6,7,8,9,10,11,12,13] * 4
 
 print("ようこそブラックジャックへ")
 print("参加する人数を選んでください")
-
+print("1.2.3.4")
 
 
 def deal ():
