@@ -1,0 +1,701 @@
+<!DOCTYPE html>
+<!-- saved from url=(0080)http://doyolab-corepon-env.eba-wm9wapty.ap-northeast-1.elasticbeanstalk.com/post -->
+<html lang="jp"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <title>Corespondence_Analysis</title>
+    <link rel="stylesheet" href="./Corespondence_Analysis_files/main.css">
+
+</head>
+<body>
+
+
+<h2>コレスポンデンス分析（対応分析）</h2>
+    <canvas id="corepon" width="800" height="800"></canvas>
+
+    <h3>累積寄与率</h3>
+    ２軸合わせて元のデータの何割を説明することができているかを表した数字。80％以上であれば、元データをかなり反映していると言われています。<br>
+    累積寄与率：61.73%
+
+    <h3>読み込みデータ</h3>
+        <table border="1" class="dataframe table table-striped">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>洋風</th>
+      <th>旅行</th>
+      <th>心がほっとする</th>
+      <th>生活感</th>
+      <th>個性溢れる</th>
+      <th>爽やか</th>
+      <th>物価が低い</th>
+      <th>商店街</th>
+      <th>落ちついている</th>
+      <th>ハイソサイエティ</th>
+      <th>若者</th>
+      <th>海</th>
+      <th>イルミネ｜ション</th>
+      <th>ネオン</th>
+      <th>イケイケ・ノリノリ</th>
+      <th>ライブハウス</th>
+      <th>ワクワクする</th>
+      <th>いつ訪れても変わらない</th>
+      <th>お年寄りが多い</th>
+      <th>整理された自然</th>
+      <th>近所のつながり</th>
+      <th>近未来</th>
+      <th>マリンスポ-ツ</th>
+      <th>音楽</th>
+    </tr>
+    <tr>
+      <th>町</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>吉祥寺</th>
+      <td>1</td>
+      <td>0</td>
+      <td>3</td>
+      <td>3</td>
+      <td>4</td>
+      <td>3</td>
+      <td>0</td>
+      <td>4</td>
+      <td>9</td>
+      <td>3</td>
+      <td>7</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>4</td>
+      <td>0</td>
+      <td>1</td>
+      <td>1</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>巣鴨</th>
+      <td>0</td>
+      <td>0</td>
+      <td>5</td>
+      <td>9</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>6</td>
+      <td>4</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>4</td>
+      <td>9</td>
+      <td>0</td>
+      <td>2</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>北千住</th>
+      <td>0</td>
+      <td>0</td>
+      <td>2</td>
+      <td>8</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>4</td>
+      <td>6</td>
+      <td>3</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>3</td>
+      <td>1</td>
+      <td>1</td>
+      <td>2</td>
+      <td>2</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>茅ケ崎</th>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>8</td>
+      <td>3</td>
+      <td>8</td>
+      <td>2</td>
+      <td>3</td>
+      <td>3</td>
+      <td>1</td>
+      <td>7</td>
+      <td>12</td>
+      <td>0</td>
+      <td>0</td>
+      <td>4</td>
+      <td>4</td>
+      <td>1</td>
+      <td>2</td>
+      <td>2</td>
+      <td>3</td>
+      <td>2</td>
+      <td>0</td>
+      <td>10</td>
+      <td>3</td>
+    </tr>
+    <tr>
+      <th>横浜</th>
+      <td>7</td>
+      <td>3</td>
+      <td>1</td>
+      <td>1</td>
+      <td>5</td>
+      <td>2</td>
+      <td>0</td>
+      <td>3</td>
+      <td>3</td>
+      <td>6</td>
+      <td>5</td>
+      <td>7</td>
+      <td>7</td>
+      <td>4</td>
+      <td>2</td>
+      <td>1</td>
+      <td>7</td>
+      <td>2</td>
+      <td>0</td>
+      <td>3</td>
+      <td>0</td>
+      <td>4</td>
+      <td>1</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <th>高円寺</th>
+      <td>1</td>
+      <td>1</td>
+      <td>5</td>
+      <td>2</td>
+      <td>2</td>
+      <td>1</td>
+      <td>1</td>
+      <td>4</td>
+      <td>1</td>
+      <td>4</td>
+      <td>2</td>
+      <td>0</td>
+      <td>1</td>
+      <td>2</td>
+      <td>1</td>
+      <td>2</td>
+      <td>2</td>
+      <td>0</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <th>藤沢</th>
+      <td>1</td>
+      <td>1</td>
+      <td>2</td>
+      <td>6</td>
+      <td>2</td>
+      <td>2</td>
+      <td>0</td>
+      <td>3</td>
+      <td>3</td>
+      <td>0</td>
+      <td>1</td>
+      <td>7</td>
+      <td>1</td>
+      <td>0</td>
+      <td>4</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>3</td>
+      <td>4</td>
+      <td>2</td>
+      <td>0</td>
+      <td>4</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <th>下北沢</th>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>6</td>
+      <td>1</td>
+      <td>0</td>
+      <td>4</td>
+      <td>1</td>
+      <td>2</td>
+      <td>8</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>4</td>
+      <td>11</td>
+      <td>2</td>
+      <td>2</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>1</td>
+      <td>0</td>
+      <td>6</td>
+    </tr>
+    <tr>
+      <th>平塚</th>
+      <td>0</td>
+      <td>0</td>
+      <td>2</td>
+      <td>10</td>
+      <td>0</td>
+      <td>1</td>
+      <td>3</td>
+      <td>6</td>
+      <td>2</td>
+      <td>0</td>
+      <td>0</td>
+      <td>9</td>
+      <td>1</td>
+      <td>0</td>
+      <td>2</td>
+      <td>0</td>
+      <td>0</td>
+      <td>4</td>
+      <td>2</td>
+      <td>2</td>
+      <td>3</td>
+      <td>0</td>
+      <td>2</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>恵比寿</th>
+      <td>2</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>4</td>
+      <td>9</td>
+      <td>4</td>
+      <td>0</td>
+      <td>5</td>
+      <td>6</td>
+      <td>2</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>3</td>
+      <td>0</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>鎌倉</th>
+      <td>0</td>
+      <td>9</td>
+      <td>6</td>
+      <td>1</td>
+      <td>1</td>
+      <td>3</td>
+      <td>0</td>
+      <td>2</td>
+      <td>9</td>
+      <td>4</td>
+      <td>2</td>
+      <td>3</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>4</td>
+      <td>4</td>
+      <td>9</td>
+      <td>3</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>原宿</th>
+      <td>4</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>12</td>
+      <td>0</td>
+      <td>2</td>
+      <td>3</td>
+      <td>0</td>
+      <td>3</td>
+      <td>14</td>
+      <td>0</td>
+      <td>2</td>
+      <td>5</td>
+      <td>12</td>
+      <td>3</td>
+      <td>8</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>9</td>
+      <td>0</td>
+      <td>6</td>
+    </tr>
+  </tbody>
+</table>
+    <h3>プロットデータ</h3>
+    <h4>表側</h4>
+        <table border="1" class="dataframe table table-striped">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>0</th>
+      <th>1</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>吉祥寺</th>
+      <td>-0.124200</td>
+      <td>-0.145831</td>
+    </tr>
+    <tr>
+      <th>巣鴨</th>
+      <td>0.975350</td>
+      <td>-0.236008</td>
+    </tr>
+    <tr>
+      <th>北千住</th>
+      <td>0.531231</td>
+      <td>-0.236407</td>
+    </tr>
+    <tr>
+      <th>茅ケ崎</th>
+      <td>0.340670</td>
+      <td>0.616750</td>
+    </tr>
+    <tr>
+      <th>横浜</th>
+      <td>-0.477364</td>
+      <td>-0.306500</td>
+    </tr>
+    <tr>
+      <th>高円寺</th>
+      <td>-0.114880</td>
+      <td>-0.193693</td>
+    </tr>
+    <tr>
+      <th>藤沢</th>
+      <td>0.461946</td>
+      <td>0.272433</td>
+    </tr>
+    <tr>
+      <th>下北沢</th>
+      <td>-0.608963</td>
+      <td>0.747506</td>
+    </tr>
+    <tr>
+      <th>平塚</th>
+      <td>0.859943</td>
+      <td>0.266542</td>
+    </tr>
+    <tr>
+      <th>恵比寿</th>
+      <td>-0.825645</td>
+      <td>-0.837455</td>
+    </tr>
+    <tr>
+      <th>鎌倉</th>
+      <td>0.564991</td>
+      <td>-0.650631</td>
+    </tr>
+    <tr>
+      <th>原宿</th>
+      <td>-0.953264</td>
+      <td>0.187627</td>
+    </tr>
+  </tbody>
+</table>
+    <h4>表頭</h4>
+        <table border="1" class="dataframe table table-striped">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>0</th>
+      <th>1</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>洋風</th>
+      <td>-0.758664</td>
+      <td>-0.324340</td>
+    </tr>
+    <tr>
+      <th>旅行</th>
+      <td>0.331268</td>
+      <td>-0.805665</td>
+    </tr>
+    <tr>
+      <th>心がほっとする</th>
+      <td>0.574505</td>
+      <td>-0.377152</td>
+    </tr>
+    <tr>
+      <th>生活感</th>
+      <td>0.867453</td>
+      <td>0.156641</td>
+    </tr>
+    <tr>
+      <th>個性溢れる</th>
+      <td>-0.676222</td>
+      <td>0.289971</td>
+    </tr>
+    <tr>
+      <th>爽やか</th>
+      <td>0.262510</td>
+      <td>0.211453</td>
+    </tr>
+    <tr>
+      <th>物価が低い</th>
+      <td>0.429736</td>
+      <td>0.381174</td>
+    </tr>
+    <tr>
+      <th>商店街</th>
+      <td>0.334950</td>
+      <td>0.097887</td>
+    </tr>
+    <tr>
+      <th>落ちついている</th>
+      <td>0.338166</td>
+      <td>-0.488390</td>
+    </tr>
+    <tr>
+      <th>ハイソサイエティ</th>
+      <td>-0.436183</td>
+      <td>-0.696539</td>
+    </tr>
+    <tr>
+      <th>若者</th>
+      <td>-0.628913</td>
+      <td>0.230290</td>
+    </tr>
+    <tr>
+      <th>海</th>
+      <td>0.552383</td>
+      <td>0.438108</td>
+    </tr>
+    <tr>
+      <th>イルミネ｜ション</th>
+      <td>-0.661049</td>
+      <td>-0.761217</td>
+    </tr>
+    <tr>
+      <th>ネオン</th>
+      <td>-1.041746</td>
+      <td>-0.710526</td>
+    </tr>
+    <tr>
+      <th>イケイケ・ノリノリ</th>
+      <td>-0.450641</td>
+      <td>0.342599</td>
+    </tr>
+    <tr>
+      <th>ライブハウス</th>
+      <td>-0.535820</td>
+      <td>0.968374</td>
+    </tr>
+    <tr>
+      <th>ワクワクする</th>
+      <td>-0.854668</td>
+      <td>0.035104</td>
+    </tr>
+    <tr>
+      <th>いつ訪れても変わらない</th>
+      <td>0.683136</td>
+      <td>-0.090127</td>
+    </tr>
+    <tr>
+      <th>お年寄りが多い</th>
+      <td>1.084058</td>
+      <td>-0.255854</td>
+    </tr>
+    <tr>
+      <th>整理された自然</th>
+      <td>0.482509</td>
+      <td>-0.412662</td>
+    </tr>
+    <tr>
+      <th>近所のつながり</th>
+      <td>0.798941</td>
+      <td>0.032145</td>
+    </tr>
+    <tr>
+      <th>近未来</th>
+      <td>-0.868896</td>
+      <td>-0.224705</td>
+    </tr>
+    <tr>
+      <th>マリンスポ-ツ</th>
+      <td>0.598014</td>
+      <td>0.963123</td>
+    </tr>
+    <tr>
+      <th>音楽</th>
+      <td>-0.650517</td>
+      <td>0.572846</td>
+    </tr>
+  </tbody>
+</table>
+
+
+    <script>
+        function draw() {
+            var row_data = JSON.stringify([[-0.1241997350948855, -0.14583063737498214], [0.9753503556374887, -0.23600761577030258], [0.5312313384411711, -0.23640715695850423], [0.34066996451692166, 0.6167501152700763], [-0.47736449314537566, -0.30650014364585226], [-0.11488017417196042, -0.19369261332360324], [0.4619459243624339, 0.2724332658939684], [-0.6089632687394615, 0.7475060676853823], [0.859943311310656, 0.2665418595131328], [-0.8256453737390695, -0.8374554865236823], [0.5649905848700042, -0.6506307511727701], [-0.9532635564267373, 0.187627208191045]]);
+            var row_data_j = JSON.parse(row_data);
+            var col_data = JSON.stringify([[-0.7586639848574469, -0.3243403973363625], [0.3312681553402419, -0.805665313386899], [0.5745047687526312, -0.37715209069144257], [0.8674534149046303, 0.15664122525208896], [-0.6762220636501746, 0.28997083933197815], [0.26251043254199635, 0.21145327684778978], [0.42973602676600287, 0.3811743886035046], [0.3349495332430547, 0.0978872573726539], [0.3381655592050896, -0.4883898524529736], [-0.4361826667147562, -0.6965389363030567], [-0.6289128006045042, 0.2302904716741072], [0.552382591433306, 0.43810789762514685], [-0.6610493065225833, -0.7612172033538505], [-1.04174608872918, -0.7105260141033048], [-0.45064070647995025, 0.34259918291937547], [-0.5358199426554278, 0.9683739559243488], [-0.8546684118733012, 0.03510379935834941], [0.6831360951148868, -0.0901271473832269], [1.0840584531083592, -0.25585397579948965], [0.48250884309914716, -0.41266241378834584], [0.7989405941040734, 0.03214479260777058], [-0.868895624102757, -0.224704593881617], [0.5980136507785525, 0.9631231676334115], [-0.6505165015031162, 0.5728463129000763]]);
+            var col_data_j = JSON.parse(col_data);
+            var row_index = JSON.stringify(["\u5409\u7965\u5bfa", "\u5de3\u9d28", "\u5317\u5343\u4f4f", "\u8305\u30b1\u5d0e", "\u6a2a\u6d5c", "\u9ad8\u5186\u5bfa", "\u85e4\u6ca2", "\u4e0b\u5317\u6ca2", "\u5e73\u585a", "\u6075\u6bd4\u5bff", "\u938c\u5009", "\u539f\u5bbf"]);
+            var row_index_j = JSON.parse(row_index);
+            var col_index = JSON.stringify(["\u6d0b\u98a8", "\u65c5\u884c", "\u5fc3\u304c\u307b\u3063\u3068\u3059\u308b", "\u751f\u6d3b\u611f", "\u500b\u6027\u6ea2\u308c\u308b", "\u723d\u3084\u304b", "\u7269\u4fa1\u304c\u4f4e\u3044", "\u5546\u5e97\u8857", "\u843d\u3061\u3064\u3044\u3066\u3044\u308b", "\u30cf\u30a4\u30bd\u30b5\u30a4\u30a8\u30c6\u30a3", "\u82e5\u8005", "\u6d77", "\u30a4\u30eb\u30df\u30cd\uff5c\u30b7\u30e7\u30f3", "\u30cd\u30aa\u30f3", "\u30a4\u30b1\u30a4\u30b1\u30fb\u30ce\u30ea\u30ce\u30ea", "\u30e9\u30a4\u30d6\u30cf\u30a6\u30b9", "\u30ef\u30af\u30ef\u30af\u3059\u308b", "\u3044\u3064\u8a2a\u308c\u3066\u3082\u5909\u308f\u3089\u306a\u3044", "\u304a\u5e74\u5bc4\u308a\u304c\u591a\u3044", "\u6574\u7406\u3055\u308c\u305f\u81ea\u7136", "\u8fd1\u6240\u306e\u3064\u306a\u304c\u308a", "\u8fd1\u672a\u6765", "\u30de\u30ea\u30f3\u30b9\u30dd-\u30c4", "\u97f3\u697d"]);
+            var col_index_j = JSON.parse(col_index);
+            var canvas = document.getElementById("corepon");
+            var ctx = document.getElementById("corepon").getContext("2d");
+
+            var x_center;
+            var y_center;
+
+            var max_val;
+            var graph_size=800;
+            var margin =1.2;
+
+            canvas.width=graph_size;
+            canvas.height=graph_size;
+            x_center = canvas.width/2;
+            y_center = canvas.height/2;
+            //グラフメモリの最大値を決める--------------------
+            max_val=0;
+            for(var r=0;r<row_data_j.length;r++){
+                for(var c=0;c<row_data_j[r].length;c++){
+                    if(Math.abs(row_data_j[r][c])>max_val){
+                        max_val = Math.abs(row_data_j[r][c]);
+                    }
+                }
+            }
+            for(var r=0;r<col_data_j.length;r++){
+                for(var c=0;c<col_data_j[r].length;c++){
+                    if(Math.abs(col_data_j[r][c])>max_val){
+                        max_val = Math.abs(col_data_j[r][c]);
+
+                    }
+                }
+            }
+            max_val=Math.ceil(margin * max_val*10)/10;
+            //---------------------------------------------
+
+            //x座標、y座標を指定-----------------------------
+            ctx.beginPath();
+                ctx.lineWidth = 0.5;
+                ctx.moveTo(0, y_center);
+                ctx.lineTo(canvas.width, y_center);
+                ctx.moveTo(x_center, 0);
+                ctx.lineTo(x_center, canvas.height);
+            ctx.stroke();
+
+            //ctx.fillText(aaa, x_center, y_center);
+
+            var point_r = 7
+            var myfont = "13px Ludica Sans Unicode"
+            //表側プロット-----------------------------
+            for(var r=0;r<row_data_j.length;r++){
+                var scale = graph_size / 2 / max_val;
+                var x = row_data_j[r][0] * scale + x_center;
+                var y = row_data_j[r][1] * scale * (-1) + y_center;
+                var idx = row_index_j[r];
+                ctx.beginPath();
+                ctx.fillStyle = 'rgba(255,105,180, 0.7)'; //ピンク
+                ctx.arc(x, y, point_r, 0, Math.PI * 2, false);
+                ctx.fill();
+                ctx.fillStyle = 'rgb(10,10,10)';
+                ctx.font =myfont;
+                ctx.fillText(idx, x, y);
+             }
+            //表頭プロット-----------------------------
+            for(var r=0;r<col_data_j.length;r++){
+                var scale = graph_size / 2 / max_val;
+                var x = col_data_j[r][0] * scale + x_center;
+                var y = col_data_j[r][1] * scale * (-1) + y_center;
+                var idx = col_index_j[r];
+                ctx.beginPath();
+                ctx.fillStyle = 'rgba(0,160,233, 0.7)'; //ピンク
+                ctx.arc(x, y, point_r, 0, Math.PI * 2, false);
+                ctx.fill();
+                ctx.fillStyle = 'rgb(10,10,10)';
+                ctx.font =myfont;
+                ctx.fillText(idx, x, y);
+             }
+        }
+
+        window.addEventListener("load", draw);
+    </script>
+
+</body></html>
